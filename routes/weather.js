@@ -27,12 +27,14 @@ router.get("/location", async (req, res, next) => {
         const locationWeather = await weatherDAO.getLocation(name);
         if (!locationWeather) {
             return res.status(404).render('weather', {
-                responseMessage: `The weather for ${name} is not available`
+                name: `${name}`,
+                temperature: 'not available'
             });
         }
 
         return res.render('weather', {
-            responseMessage: `The weather for ${name} is ${locationWeather.temperature}`
+            name: `${name}`,
+            temperature: `${locationWeather.temperature}`
         });
     } catch (e) {
         console.error(e);
