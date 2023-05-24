@@ -5,11 +5,11 @@ const weatherDAO = require('../daos/weather');
 router.get("/", (req, res, next) => {
     try {
         res.send(`
-        <html>
-    <body>
-        <h1>Hello, World</h1>
-    </body>
-</html>
+        <form action="/weather/location" method="GET">
+          <label for="locationName">Enter a location:</label><br>
+          <input type="text" name="name" placeholder="Name"><br>
+          <input type="submit" value="Submit">
+        </form>
         `);
     } catch (e) {
         console.error(e);
